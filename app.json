@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "PartyBox",
+    "slug": "partybox",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/partybox-icon.png",
+    "scheme": "partybox",
+    "platforms": ["android"],
+    "userInterfaceStyle": "dark",
+    "android": {
+      "package": "com.partybox.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#0B0917",
+        "foregroundImage": "./assets/images/partybox-foreground.png",
+        "monochromeImage": "./assets/images/partybox-foreground.png"
+      },
+      "blockedPermissions": ["android.permission.INTERNET"],
+      "predictiveBackGestureEnabled": false
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#0B0917",
+          "image": "./assets/images/partybox-foreground.png",
+          "imageWidth": 120
+        }
+      ],
+      "expo-localization"
+    ],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}

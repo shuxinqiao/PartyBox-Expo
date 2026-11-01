@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="star" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#CE9AFF"/>
+      <stop offset="1" stop-color="#A66AFF"/>
+    </linearGradient>
+  </defs>
+  <path d="M512 288 L568 456 L736 512 L568 568 L512 736 L456 568 L288 512 L456 456 Z" fill="url(#star)"/>
+  <path d="M700 267 L721 330 L784 351 L721 372 L700 435 L679 372 L616 351 L679 330 Z" fill="#46E8D7"/>
+  <path d="M324 622 L344 682 L404 702 L344 722 L324 782 L304 722 L244 702 L304 682 Z" fill="#FF79C9"/>
+</svg>
