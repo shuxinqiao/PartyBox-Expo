@@ -2,7 +2,7 @@
 
 Free, open-source, offline Android party games. No accounts, ads, in-app purchases, or required network service.
 
-This is **M1**: the app shell, Midnight Neon visual design, and an interactive Sync Meter dial prototype. Charades is still a placeholder.
+This is **M3**: the neon app shell, responsive mechanical dial, three built-in decks, a locally saved custom question bank, and free-play manual questions. Charades is still a placeholder.
 
 ## Expo Go compatibility
 
@@ -54,21 +54,27 @@ src/
 ├── features/
 │   ├── home/                    Home UI + small game artworks
 │   ├── shared/                  Charades placeholder page
-│   └── wavelength/              Interactive semicircle dial + demo screen
+│   └── wavelength/              Dial, game flow, preset decks, custom question editor
 ├── i18n/                        English + Chinese strings and preference
 └── theme/                       Shared color tokens
 ```
 
 The UI defaults to the phone's language (Chinese or English), with English fallback. Tap the `中文` / `EN` button to change languages manually; the preference is stored locally.
 
-### Try the Sync Meter prototype
+### Play Sync Meter (two people, one phone)
 
-1. Tap **Sync Meter / 默契刻度** on the home screen.
-2. Touch the arc to jump to a position, or drag across the dial to move the pointer.
-3. Use **− / +** for precise 5-point adjustments. The number is visible in this prototype only, to help validate the touch mapping.
-4. Confirm to lock your choice, then tap again to adjust it.
+1. Tap **Sync Meter / 默契刻度** on the home screen and select **Friends / Couples / Family**, **My question bank**, or **Free play**.
+2. With a preset or custom bank, each round advances to the next question. The custom bank can be created and edited in the app; questions are stored locally using AsyncStorage.
+3. In Free play, you write the question and both endpoints directly before each round (or edit them again while A is setting the range). Nothing is saved as a bank.
+4. **Player A** drags the symmetric scoring zone to position the secret target, then passes the phone. The red needle is hidden at this stage.
+5. **Handoff** hides the target. **Player B** drags the thinner red needle, then locks their guess.
+6. **Reveal** shows both together. The score is 4 (center), 3, 2, or 0 (outside), accumulated across rounds.
 
-The dial uses 0 on the left, 50 at the top, and 100 on the right. This milestone does **not** implement player handoff, answer hiding, reveal animation, or scoring yet.
+The dial uses 0 on the left, 50 at the top, and 100 on the right. Pointer motion follows the finger **directly on the UI thread**, with no chase animation during a drag. On release it snaps to an even percentage with a brief finish animation. Tactile notches are crossed about every 4 points.
+
+The scoring zone has **five equal-width sectors**, each spanning 4 percentage points (20 points total). Center distance ≤2 earns 4, ≤6 earns 3, ≤10 earns 2. A's center is limited to 10–90 so none of the five sectors is clipped at the endpoints. Game screens are non-scrolling. The mechanical SVG is newly drawn in code without third-party board-game logos or artwork.
+
+`expo-haptics` triggers Android segmented-tick feedback or an iOS rigid impact when the hand crosses a notch. Actual tactile strength and timing vary by phone and OS settings; confirm on a physical device.
 
 Android navigation currently uses Expo Router's JS Stack (`expo-router/js-stack`) and keeps inactive screens attached. This avoids the native transition white flash observed when returning to the home screen on the test device.
 
@@ -82,11 +88,11 @@ npx expo export --platform android
 
 After upgrading from an earlier SDK 57 copy, use the new `package.json` and `package-lock.json` together. Run `npm install` in the updated directory, then `npx expo start --clear` to ensure Metro does not reuse the old bundle.
 
-## Future features (not included in M1)
+## Future features (not included in M3)
 
 - Charades: `expo-sensors` / `DeviceMotion`, relative calibration and a gesture state machine.
-- Sync Meter: two-player handoff, answer hiding, reveal animation, and scoring.
-- Sounds, haptics and additional JSON question packs.
+- Sync Meter: more question packs, multi-bank organization and JSON import/export, polish after physical-device testing, and a longer-session results screen.
+- Sounds and customizable feedback settings.
 
 ## Brand colors
 

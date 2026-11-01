@@ -1,5 +1,5 @@
-import WavelengthPlayground from '@/features/wavelength/WavelengthPlayground';
+import WavelengthGame from '@/features/wavelength/WavelengthGame';
 
 export default function WavelengthPage() {
-  return <WavelengthPlayground />;
+  return <WavelengthGame />;
 }

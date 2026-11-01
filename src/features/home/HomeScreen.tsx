@@ -140,14 +140,6 @@ export default function HomeScreen() {
           <View style={styles.hero}>
             <Text style={styles.heroTitle}>{t('title')}</Text>
             <Text style={styles.heroSubtitle}>{t('subtitle')}</Text>
-            <View style={styles.pillRow}>
-              <View style={[styles.pill, styles.purplePill]}>
-                <Text style={[styles.pillText, { color: COLORS.purple }]}>✦  {t('noAds')}</Text>
-              </View>
-              <View style={[styles.pill, styles.cyanPill]}>
-                <Text style={[styles.pillText, { color: COLORS.cyan }]}>✦  {t('noInternet')}</Text>
-              </View>
-            </View>
           </View>
 
           <View style={styles.sectionHeader}>
@@ -227,14 +219,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   languageButtonText: { color: COLORS.cyan, fontSize: 12, fontWeight: '800' },
-  hero: { paddingTop: 45, paddingBottom: 43 },
+  hero: { paddingTop: 45, paddingBottom: 37 },
   heroTitle: { color: COLORS.white, fontSize: 40, letterSpacing: -1.2, fontWeight: '900' },
   heroSubtitle: { color: COLORS.muted, fontSize: 14, lineHeight: 22, marginTop: 7 },
-  pillRow: { flexDirection: 'row', gap: 8, marginTop: 27, flexWrap: 'wrap' },
-  pill: { borderRadius: 22, paddingVertical: 8, paddingHorizontal: 12, borderWidth: 1 },
-  purplePill: { backgroundColor: 'rgba(173,120,255,0.10)', borderColor: 'rgba(173,120,255,0.20)' },
-  cyanPill: { backgroundColor: 'rgba(70,232,215,0.09)', borderColor: 'rgba(70,232,215,0.19)' },
-  pillText: { fontSize: 11, fontWeight: '600' },
   sectionHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
